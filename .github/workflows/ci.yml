@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+    
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4.1
+
+      - name: Permissions
+        run: chmod +x bin/rubocop; chmod +x bin/brakeman; chmod +x bin/rails
+      
+      - name: Install
+        run: make setup
+
+      - name: Tests
+        run: make tests
+      
+      - name: Linters
+        run: make lint
