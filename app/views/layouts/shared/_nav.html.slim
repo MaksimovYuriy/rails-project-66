@@ -1,0 +1,23 @@
+.container-fluid.p-1.me-2.mb-2.bg-dark
+  .navbar.navbar-expand-md.bg-dark
+    .container
+      #navbarToggler.collapse.navbar-collapse
+        ul.nav.nav-pills.flex-grow-1.navbar-nav
+          li.nav-item.me-2
+            = link_to t('links.home'), root_path, class: 'nav-link text-light'
+        ul.nav.nav-pills.navbar-nav.mr-auto.align-items-center.justify-content-between
+          - if true
+            li.nav-item.me-2
+                = "заглушка"
+            li.nav-item.me-2
+                = "заглушка"
+
+            - if true
+              li.nav-item.me-2
+                = "заглушка"
+
+            li.nav-item.me-2
+              = "заглушка"
+          - else
+            li.nav-item.me-2
+              = "заглушка"

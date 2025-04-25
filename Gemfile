@@ -3,6 +3,9 @@ source "https://rubygems.org"
 gem "sentry-ruby"
 gem "sentry-rails"
 
+gem 'slim_lint'
+gem 'erb2slim'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.2", ">= 7.2.2.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
