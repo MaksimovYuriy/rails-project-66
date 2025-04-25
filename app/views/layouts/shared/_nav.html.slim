@@ -6,7 +6,7 @@
           li.nav-item.me-2
             = link_to t('links.home'), root_path, class: 'nav-link text-light'
         ul.nav.nav-pills.navbar-nav.mr-auto.align-items-center.justify-content-between
-          - if true
+          - if current_user
             li.nav-item.me-2
                 = "заглушка"
             li.nav-item.me-2
@@ -17,7 +17,7 @@
                 = "заглушка"
 
             li.nav-item.me-2
-              = "заглушка"
+              = button_to t('links.logout'), auth_logout_path, data: { turbo: false }, method: :delete, class: 'btn btn-outline-light'
           - else
             li.nav-item.me-2
-              = "заглушка"
+              = button_to t('links.login_github'), auth_request_path(:github), data: { turbo: false }, method: :post, class: 'btn btn-outline-light'

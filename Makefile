@@ -6,7 +6,7 @@ setup:
 	bin/rails db:migrate
 	bin/rails db:seed
 
-test:
+tests:
 	rake test
 
 lint:

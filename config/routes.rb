@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   root "web/welcome#index"
+
+  scope module: :web do
+    post 'auth/:provider', to: 'auth#request', as: :auth_request
+    get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
+    delete 'logout', to: 'auth#logout', as: :auth_logout
+    get 'auth/failure', to: 'auth#failure'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
