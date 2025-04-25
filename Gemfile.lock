@@ -149,6 +149,9 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.25.5)
+    minitest-power_assert (0.3.1)
+      minitest
+      power_assert (>= 1.1)
     msgpack (1.8.0)
     net-imap (0.5.7)
       date
@@ -181,6 +184,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
+    power_assert (2.0.5)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -356,6 +360,7 @@ DEPENDENCIES
   erb2slim
   jbuilder
   jsbundling-rails
+  minitest-power_assert
   pg
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
