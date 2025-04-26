@@ -104,6 +104,8 @@ GEM
       reline (>= 0.3.8)
     dotenv (3.1.8)
     drb (2.2.1)
+    enumerize (2.8.1)
+      activesupport (>= 3.2)
     erb2slim (0.0.1)
       erubis
       haml
@@ -407,6 +409,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   dotenv
+  enumerize
   erb2slim
   jbuilder
   jsbundling-rails

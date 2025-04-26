@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
     delete 'logout', to: 'auth#logout', as: :auth_logout
     get 'auth/failure', to: 'auth#failure'
+
+    resources :repositories, only: %i[index new]
+
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

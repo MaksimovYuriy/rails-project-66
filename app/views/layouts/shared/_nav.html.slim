@@ -8,9 +8,9 @@
         ul.nav.nav-pills.navbar-nav.mr-auto.align-items-center.justify-content-between
           - if current_user
             li.nav-item.me-2
-                = "заглушка"
+                = link_to 'Репозитории', repositories_path, class: 'btn btn-outline-light'
             li.nav-item.me-2
-                = "заглушка"
+                = link_to 'Добавить', new_repository_path, class: 'btn btn-outline-light'
 
             - if true
               li.nav-item.me-2
