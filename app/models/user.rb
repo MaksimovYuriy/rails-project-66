@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-    has_many :reposotories
+    has_many :repositories
 end

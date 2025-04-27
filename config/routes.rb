@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'auth#logout', as: :auth_logout
     get 'auth/failure', to: 'auth#failure'
 
-    resources :repositories, only: %i[index new]
+    resources :repositories, only: %i[index new create]
 
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
