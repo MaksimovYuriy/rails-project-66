@@ -1,17 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: test_repo
   github_id: 1
-  full_name: MyString
-  language: MyString
-  clone_url: MyString
-  ssh_url: MyString
-
-two:
-  name: MyString
-  github_id: 1
-  full_name: MyString
-  language: MyString
-  clone_url: MyString
-  ssh_url: MyString
+  full_name: full_name_test_repo
+  language: Ruby
+  clone_url: clone_url
+  ssh_url: ssh_url
