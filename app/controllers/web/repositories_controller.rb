@@ -15,7 +15,6 @@ module Web
         def create
             load_github_repositories
             target_repository = @github_repositories.find { |repo| repo.id.to_s == repository_params[:github_id] }
-
             if target_repository
                 @repository = current_user.repositories.build(repository_params)
                 @repository.name = target_repository.name
@@ -33,16 +32,16 @@ module Web
         private
 
         def github_client
-            Octokit::Client.new(
+            octokit_client = ApplicationContainer[:octokit_client].new(
                 access_token: current_user.token,
-                auto_paginate: true
+                auto_paginate: true                
             )
         end
 
         def load_github_repositories
             @github_repositories = Rails.cache.fetch("github_repositories_#{current_user.id}", expires_in: 1.hour) do
-                begin   
-                    github_client.repos.select { |repo| repo&.language == 'Ruby'}
+                begin
+                    github_client.repos.select { |repo| repo.language == 'Ruby' }
                 rescue Octokit::Unauthorized
                     redirect_to root_path, notice: 'Необходимо авторизироваться заново'
                 end
