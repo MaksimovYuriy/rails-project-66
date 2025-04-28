@@ -41,7 +41,7 @@ module Web
 
         def load_github_repositories
             @github_repositories = Rails.cache.fetch("github_repositories_#{current_user.id}", expires_in: 1.hour) do
-                begin    
+                begin   
                     github_client.repos.select { |repo| repo&.language == 'Ruby'}
                 rescue Octokit::Unauthorized
                     redirect_to root_path, notice: 'Необходимо авторизироваться заново'

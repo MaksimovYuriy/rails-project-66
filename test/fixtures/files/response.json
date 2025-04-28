@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "test_name_1",
+    "full_name": "test_full_name_1",
+    "language": "Ruby",
+    "clone_url": "some_clone_url_1",
+    "ssh_url": "some_ssh_url_1"
+  },
+  {
+    "id": 2,
+    "name": "test_name_2",
+    "full_name": "test_full_name_2",
+    "language": "Ruby",
+    "clone_url": "some_clone_url_2",
+    "ssh_url": "some_ssh_url_2"
+  },
+  {
+    "id": 3,
+    "name": "test_name_3",
+    "full_name": "test_full_name_3",
+    "language": "Ruby",
+    "clone_url": "some_clone_url_3",
+    "ssh_url": "some_ssh_url_3"
+  }
+]
