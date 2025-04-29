@@ -1,0 +1,42 @@
+strong
+    h1
+        = @repository.full_name
+
+= link_to 'Проверить', repository_path(@repository), class: 'btn btn-primary mb-3'
+
+.mb-3
+    .mb-3
+        strong 
+            = 'Название: '
+        = @repository.full_name
+
+    .mb-3
+        strong 
+            = 'Язык: '
+        = @repository.language
+
+    .mb-3
+        strong 
+            = 'Дата создания: '
+        = @repository.created_at
+
+    .mb-3
+        strong 
+            = 'Дата обновления: '
+        = @repository.updated_at
+
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th id
+      th state (aasm)
+      th id (commit)
+      th state (result of check)
+      th date
+  tbody
+      tr
+        td = 'заглушка'
+        td = 'заглушка'
+        td = 'заглушка'
+        td = 'заглушка'
+        td = 'заглушка'

@@ -1,8 +1,10 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
-require "helpers/test_helpers"
-require "helpers/octokit_client_stub"
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
+require 'helpers/test_helpers'
+require 'helpers/octokit_client_stub'
 
 require 'webmock/minitest'
 

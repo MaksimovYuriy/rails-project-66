@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class Repository < ApplicationRecord
-    belongs_to :user
+  belongs_to :user
+  has_many :checks
 
-    extend Enumerize
+  extend Enumerize
 
-    enumerize :language, in: %i[Ruby] 
+  enumerize :language, in: %i[Ruby]
 end

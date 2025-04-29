@@ -1,10 +1,11 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 module Web
   class RepositoriesControllerTest < ActionDispatch::IntegrationTest
-
     setup do
-      @github_repos_url = "https://api.github.com/user/repos"
+      @github_repos_url = 'https://api.github.com/user/repos'
       @user = users(:user)
 
       @attrs = {
@@ -15,20 +16,20 @@ module Web
 
       fixture_body = load_fixture('files/response.json')
       stub_request(:get, "#{@github_repos_url}?per_page=100")
-      .with(
-        headers: { 
-          'Accept'=>'application/vnd.github.v3+json',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Authorization'=>"token #{@user.token}",
-          'Content-Type'=>'application/json',
-          'User-Agent'=>'Octokit Ruby Gem 10.0.0'
-        }
-      )
-      .to_return(
-        status: 200,
-        body: fixture_body,
-        headers: { "Content-Type" => "application/json" }
-      )
+        .with(
+          headers: {
+            'Accept' => 'application/vnd.github.v3+json',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Authorization' => "token #{@user.token}",
+            'Content-Type' => 'application/json',
+            'User-Agent' => 'Octokit Ruby Gem 10.0.0'
+          }
+        )
+        .to_return(
+          status: 200,
+          body: fixture_body,
+          headers: { 'Content-Type' => 'application/json' }
+        )
     end
 
     test 'index page not authorized' do
@@ -53,7 +54,7 @@ module Web
 
     test 'new page authorized' do
       sign_in @user
-      
+
       get new_repository_path
 
       assert_response :success
@@ -68,6 +69,5 @@ module Web
       assert_response :redirect
       assert { repository }
     end
-
   end
 end
