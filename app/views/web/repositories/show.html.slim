@@ -2,7 +2,7 @@ strong
     h1
         = @repository.full_name
 
-= link_to 'Проверить', repository_path(@repository), class: 'btn btn-primary mb-3'
+= button_to 'Проверить', repository_checks_path(@repository), class: 'btn btn-primary mb-3'
 
 .mb-3
     .mb-3

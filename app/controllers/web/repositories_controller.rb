@@ -9,12 +9,12 @@ module Web
     end
 
     def show
-      @repository = Repository.find(params[:id])
+      @repository = ::Repository.find(params[:id])
     end
 
     def new
       load_github_repositories
-      @repository = Repository.new
+      @repository = ::Repository.new
     end
 
     def create
