@@ -5,9 +5,7 @@ module Web
             before_action :set_repository
 
             def create
-                check = @repository.checks.build()
-                linter = ApplicationContainer[:linter].new(@repository.clone_url, check)
-                linter.call
+                RepositoryCheckJob.perform_later(@repository)
             end
 
             def show
