@@ -1,0 +1,19 @@
+strong
+    h1
+        = "Проверка: #{@check.id}"
+
+.mb-3
+    strong Статус: 
+    = @check.state
+
+.mb-3
+    strong ID коммита: 
+    = @check.try(:commit_id).to_s[0..6]
+
+.mb-3
+    strong Дата проверки: 
+    = @check.created_at
+
+.mb-3
+    strong Вывод: 
+    = @check.output

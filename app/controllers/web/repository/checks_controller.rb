@@ -10,7 +10,7 @@ module Web
             end
 
             def show
-
+                @check = ::Repository::Check.find(params[:id])
             end
 
             private

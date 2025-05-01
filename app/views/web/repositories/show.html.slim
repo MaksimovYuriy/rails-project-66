@@ -35,7 +35,7 @@ table.table.table-striped.table-bordered.table-hover
   tbody
     - @repository.checks.order(created_at: :desc).each do |check|
       tr
-        td = check.id
+        td = link_to check.id, repository_check_path(@repository, check)
         td = check.state
         td = check.try(:commit_id).to_s[0..6]
         td = check.created_at
