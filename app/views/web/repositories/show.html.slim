@@ -29,14 +29,13 @@ table.table.table-striped.table-bordered.table-hover
   thead
     tr
       th id
-      th state (aasm)
-      th id (commit)
-      th state (result of check)
+      th state
+      th commit_id
       th date
   tbody
+    - @repository.checks.order(created_at: :desc).each do |check|
       tr
-        td = 'заглушка'
-        td = 'заглушка'
-        td = 'заглушка'
-        td = 'заглушка'
-        td = 'заглушка'
+        td = check.id
+        td = check.state
+        td = check.try(:commit_id).to_s[0..6]
+        td = check.created_at

@@ -5,8 +5,8 @@ table.table.table-striped.table-bordered.table-hover
       th language
       th state
   tbody
-    - @repositories.each do |repo|
+    - @repositories.order(created_at: :desc).each do |repo|
       tr
         td = link_to repo.name, repository_path(repo)
         td = repo.language
-        td = "soon"
+        td = repo.checks.last&.state

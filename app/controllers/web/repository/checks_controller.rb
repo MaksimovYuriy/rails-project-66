@@ -6,6 +6,7 @@ module Web
 
             def create
                 RepositoryCheckJob.perform_later(@repository)
+                redirect_to repository_path(@repository)
             end
 
             def show

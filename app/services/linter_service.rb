@@ -14,7 +14,6 @@ class LinterService
             clone_repo
             run_linter
             cleanup
-            @check.complete!
         rescue StandardError => e
             @check.fail!
         end
@@ -45,14 +44,15 @@ class LinterService
         repo_path = "#{@output_dir}/#{@temp_dir}"
         rubocop_config = Rails.root.join('.rubocop.yml').to_s
 
-        begin
-            cmd = "bundle exec rubocop --config #{rubocop_config} #{repo_path}"
-            stdout, stderr, status = Open3.capture3(cmd)
-            @check.update!(output: stdout)
-        rescue StandardError => e
-            @check.fail!
+        cmd = "bundle exec rubocop --config #{rubocop_config} #{repo_path}"
+        stdout, stderr, status = Open3.capture3(cmd)
+        @check.update!(output: stdout)
+
+        if status.success?
+            @check.success!
+        else
+            raise "Failed to lint repository!"
         end
-        
     end
 
     def generate_temp_dir
