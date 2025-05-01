@@ -7,3 +7,4 @@ one:
   language: Ruby
   clone_url: clone_url
   ssh_url: ssh_url
+  user: user

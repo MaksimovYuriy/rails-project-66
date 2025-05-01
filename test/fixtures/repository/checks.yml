@@ -1,13 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+one_repo_check:
   repository: one
-  state: MyString
-  output: MyText
-  offenses_count: 1
-
-two:
-  repository: two
-  state: MyString
-  output: MyText
-  offenses_count: 1
+  state: "completed"
+  output: "test output"
+  commit_id: "test_commit_id"

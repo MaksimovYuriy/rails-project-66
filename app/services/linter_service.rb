@@ -23,7 +23,7 @@ class LinterService
     private
 
     def clone_repo
-        @check.clone!
+        @check.to_clone!
         clone_path = "#{@output_dir}/#{@temp_dir}"
 
         cmd = "git clone #{@clone_url} #{clone_path}"
@@ -48,13 +48,12 @@ class LinterService
         begin
             cmd = "bundle exec rubocop --config #{rubocop_config} #{repo_path}"
             stdout, stderr, status = Open3.capture3(cmd)
+            @check.update!(output: stdout)
         rescue StandardError => e
             @check.fail!
         end
         
     end
-
-    private
 
     def generate_temp_dir
         SecureRandom.hex(8)

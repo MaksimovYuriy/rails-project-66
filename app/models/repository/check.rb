@@ -8,7 +8,7 @@ class Repository::Check < ApplicationRecord
     state :created, initial: true
     state :cloning, :running, :completed, :failed
 
-    event :clone do
+    event :to_clone do
       transitions from: :created, to: :cloning
     end
 
