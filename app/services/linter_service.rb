@@ -47,10 +47,10 @@ class LinterService
         case @language
         when 'Ruby'
             config = Rails.root.join('.rubocop.yml').to_s
-            cmd = "bundle exec rubocop --config #{config} #{repo_path}"
+            cmd = "bundle exec rubocop --config #{config} #{repo_path} --format json"
         when 'JavaScript'
-            config = Rails.root.join('eslint.config.js').to_s
-            cmd = "npx eslint --config #{config} #{repo_path}"
+            config = Rails.root.join('eslint.config.mjs').to_s
+            cmd = "npx eslint --config #{config} #{repo_path} --format json"
         else
             raise "Unknown language"
         end
