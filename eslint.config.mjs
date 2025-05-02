@@ -1,14 +1,17 @@
-import globals from "globals";
 import { defineConfig } from "eslint/config";
+import js from "@eslint/js";
 
 export default defineConfig([
   {
-    files: ["**/*.{js,mjs,cjs}"],
-    languageOptions: { globals: globals.browser },
+    files: ["/tmp/repository/**/*.{js,jsx,ts,tsx}"],  // Указываем конкретные файлы
+    plugins: { js },
+    extends: ["js/recommended"],
+  },
+  {
     rules: {
-      'no-console': 'warn', // Предупреждение для использования console
-      'no-unused-vars': 'warn', // Предупреждение для неиспользуемых переменных
-      'semi': ['error', 'always'] // Ошибка, если нет точки с запятой
-    }
-  }
+      "no-unused-vars": "warn",
+      "no-undef": "warn",
+    },
+  },
 ]);
+

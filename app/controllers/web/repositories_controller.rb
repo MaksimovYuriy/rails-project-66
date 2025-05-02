@@ -4,7 +4,7 @@ module Web
   class RepositoriesController < Web::ApplicationController
     before_action :authenticate_user!
 
-    LANGUAGES = ['Ruby', 'JavaScript']
+    LANGUAGES = %w[Ruby JavaScript].freeze
 
     def index
       @repositories = current_user.repositories

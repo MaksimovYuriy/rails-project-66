@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class Repository::Check < ApplicationRecord
   belongs_to :repository
 
   include AASM
 
   aasm column: 'state' do
-
     state :created, initial: true
     state :cloning, :running, :successful, :failed
 
@@ -21,9 +22,7 @@ class Repository::Check < ApplicationRecord
     end
 
     event :fail do
-      transitions from: [:created, :cloning, :running], to: :failed
+      transitions from: %i[created cloning running], to: :failed
     end
-
   end
-
 end
