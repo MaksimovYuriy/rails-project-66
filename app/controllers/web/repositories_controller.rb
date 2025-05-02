@@ -4,6 +4,8 @@ module Web
   class RepositoriesController < Web::ApplicationController
     before_action :authenticate_user!
 
+    LANGUAGES = ['Ruby', 'JavaScript']
+
     def index
       @repositories = current_user.repositories
     end
@@ -45,7 +47,7 @@ module Web
 
     def load_github_repositories
       @github_repositories = Rails.cache.fetch("github_repositories_#{current_user.id}", expires_in: 1.hour) do
-        github_client.repos.select { |repo| repo.language == 'Ruby' }
+        github_client.repos.select { |repo| LANGUAGES.include?(repo.language) }
       rescue Octokit::Unauthorized
         redirect_to root_path, notice: 'Необходимо авторизироваться заново'
       end

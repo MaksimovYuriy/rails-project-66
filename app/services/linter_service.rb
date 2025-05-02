@@ -2,9 +2,10 @@ require 'open3'
 
 class LinterService
 
-    def initialize(clone_url, check, output_dir: '/tmp')
+    def initialize(clone_url, check, language, output_dir: '/tmp')
         @clone_url = clone_url
         @check = check
+        @language = language
         @output_dir = output_dir
         @temp_dir = generate_temp_dir
     end
@@ -42,17 +43,32 @@ class LinterService
     def run_linter
         @check.run!
         repo_path = "#{@output_dir}/#{@temp_dir}"
-        rubocop_config = Rails.root.join('.rubocop.yml').to_s
 
-        cmd = "bundle exec rubocop --config #{rubocop_config} #{repo_path}"
-        stdout, stderr, status = Open3.capture3(cmd)
-        @check.update!(output: stdout)
-
-        if status.success?
-            @check.success!
+        case @language
+        when 'Ruby'
+            config = Rails.root.join('.rubocop.yml').to_s
+            cmd = "bundle exec rubocop --config #{config} #{repo_path}"
+        when 'JavaScript'
+            config = Rails.root.join('eslint.config.js').to_s
+            cmd = "npx eslint --config #{config} #{repo_path}"
         else
-            raise "Failed to lint repository!"
+            raise "Unknown language"
         end
+
+        stdout, stderr, status = Open3.capture3(cmd)
+
+        case status.exitstatus
+        when 0
+            @check.update!(output: stdout)
+            @check.success!
+        when 1
+            @check.update!(output: stdout)
+            @check.fail!
+        when 2
+            @check.update!(output: stderr)
+            @check.fail!
+        end
+
     end
 
     def generate_temp_dir

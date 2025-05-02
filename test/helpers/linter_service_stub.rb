@@ -2,9 +2,10 @@
 
 class LinterServiceStub
 
-    def initialize(clone_url, check, output_dir: '/tmp')
+    def initialize(clone_url, check, language, output_dir: '/tmp')
         @clone_url = clone_url
         @check = check
+        @language = language
         @output_dir = output_dir
         @temp_dir = generate_temp_dir
     end

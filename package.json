@@ -2,7 +2,9 @@
   "name": "app",
   "private": true,
   "devDependencies": {
-    "esbuild": "^0.25.3"
+    "esbuild": "^0.25.3",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",

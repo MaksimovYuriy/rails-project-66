@@ -6,5 +6,5 @@ class Repository < ApplicationRecord
 
   extend Enumerize
 
-  enumerize :language, in: %i[Ruby]
+  enumerize :language, in: %i[Ruby JavaScript]
 end
