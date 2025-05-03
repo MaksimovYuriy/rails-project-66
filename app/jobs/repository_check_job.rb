@@ -5,7 +5,7 @@ class RepositoryCheckJob < ApplicationJob
 
   def perform(repository)
     check = repository.checks.build
-    linter = ApplicationContainer[:linter].new(repository.clone_url, check, repository.language)
+    linter = ApplicationContainer[:linter].new(repository.clone_url, check, repository.language, repository.full_name)
     linter.call
   end
 end

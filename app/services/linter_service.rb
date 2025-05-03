@@ -3,12 +3,12 @@
 require 'open3'
 
 class LinterService
-  def initialize(clone_url, check, language, output_dir: '/tmp')
+  def initialize(clone_url, check, language, repo_full_name, output_dir: '/tmp')
     @clone_url = clone_url
     @check = check
     @language = language
     @output_dir = output_dir
-    @temp_dir = 'repository'
+    @temp_dir = repo_full_name
   end
 
   def call
@@ -48,8 +48,8 @@ class LinterService
       config = Rails.root.join('.rubocop.yml').to_s
       cmd = "bundle exec rubocop --config #{config} #{repo_path} --format json"
     when 'JavaScript'
-      config = Rails.root.join('eslint.config.mjs').to_s
-      cmd = "npx eslint --config '#{config}' '#{repo_path}' --format=json --debug"
+      config = Rails.root.join('.eslintrc.js').to_s
+      cmd = "npx eslint --no-eslintrc --config '#{config}' '#{repo_path}' --format=json"
     else
       raise 'Unknown language'
     end
