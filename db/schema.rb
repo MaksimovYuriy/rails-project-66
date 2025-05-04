@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_04_094923) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_04_114819) do
   create_table "repositories", force: :cascade do |t|
     t.string "name"
     t.integer "github_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_04_094923) do
     t.datetime "updated_at", null: false
     t.string "commit_id"
     t.json "summary", default: {}, null: false
-    t.json "files", default: [], null: false
+    t.json "files", default: {}, null: false
     t.index ["repository_id"], name: "index_repository_checks_on_repository_id"
   end
 
