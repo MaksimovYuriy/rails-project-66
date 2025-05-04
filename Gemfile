@@ -25,6 +25,8 @@ gem 'dry-container'
 gem 'aasm'
 gem 'securerandom'
 
+gem 'rubocop-rails-omakase', require: false
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.2.2', '>= 7.2.2.1'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -68,7 +70,6 @@ group :development, :test do
   gem 'brakeman', require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem 'rubocop-rails-omakase', require: false
 end
 
 group :test do
