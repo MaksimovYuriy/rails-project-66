@@ -3,6 +3,8 @@
 require 'open3'
 
 class LinterService
+  extend LinterParser
+
   def initialize(clone_url, check, language, repo_full_name, output_dir: '/tmp')
     @clone_url = clone_url
     @check = check
@@ -24,6 +26,10 @@ class LinterService
   def clone_repo
     @check.to_clone!
     clone_path = "#{@output_dir}/#{@temp_dir}"
+
+    if Dir.exist?(clone_path)
+      FileUtils.rm_rf(clone_path)
+    end
 
     cmd = "git clone #{@clone_url} #{clone_path}"
     _, stderr, status = Open3.capture3(cmd)
@@ -55,13 +61,15 @@ class LinterService
     end
 
     stdout, stderr, status = Open3.capture3(cmd)
+    
+    parsed_data = LinterParser.parse(@language, stdout)
 
     case status.exitstatus
     when 0
-      @check.update!(output: stdout)
+      @check.update!(output: stdout, files: parsed_data[:files], summary: parsed_data[:summary])
       @check.success!
     when 1
-      @check.update!(output: stdout)
+      @check.update!(output: stdout, files: parsed_data[:files], summary: parsed_data[:summary])
       @check.fail!
     when 2
       @check.update!(output: stderr)
