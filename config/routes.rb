@@ -14,6 +14,10 @@ Rails.application.routes.draw do
         resources :checks, only: %i[create show]
       end
     end
+
+    namespace :api do
+      resources :checks, only: %i[create]
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
