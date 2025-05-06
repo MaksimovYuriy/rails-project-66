@@ -1,0 +1,20 @@
+h1 Check Result
+
+p Hello, #{@check.repository&.user&.nickname}
+
+p Your check has been failed. Here are the details:
+
+ul
+    li
+        strong Status:
+        |  #{@check.state}
+    li
+        strong Started at:
+        |  #{@check.created_at.strftime('%Y-%m-%d %H:%M')}
+    li
+        strong Repository:
+        a href = @check.repository&.clone_url
+        | #{@check.repository&.clone_url}
+
+p Thank you!
+

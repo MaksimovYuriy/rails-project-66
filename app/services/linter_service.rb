@@ -17,8 +17,10 @@ class LinterService
     clone_repo
     run_linter
     cleanup
+    debugger
   rescue StandardError
     @check.fail!
+    CheckMailer.check_failed(@check).deliver_now
   end
 
   private
@@ -70,15 +72,21 @@ class LinterService
       @check.success!
     when 1
       @check.update!(output: stdout, files: parsed_data[:files], summary: parsed_data[:summary])
-      @check.fail!
+      raise 'Linter errors!'
     when 2
       @check.update!(output: stderr)
-      @check.fail!
+      raise 'Startup error!'
     end
   end
 
   def cleanup
     temp_path = "#{@output_dir}/#{@temp_dir}"
     FileUtils.rm_rf(temp_path)
+  end
+
+  def send_mail
+    if @check.failed?
+      CheckMailer.check_failed(@check).deliver_now
+    end
   end
 end
