@@ -21,10 +21,10 @@ table.table.table-striped.table-bordered.table-hover
       th identifier
       th position
   tbody
-    - @check.files.each do |file, errors|
+    - @check.files.each do |url, errors|
         - if errors.present?
             tr 
-                td colspan="3" = file
+                td colspan="3" = link_to get_filename_from_url(url), url
             - errors.each do |error|
                 tr
                     td = error['message']
