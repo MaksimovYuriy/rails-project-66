@@ -14,6 +14,19 @@ strong
     strong Дата проверки: 
     = @check.created_at
 
-.mb-3
-    strong Вывод: 
-    = @check.files
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th message
+      th identifier
+      th position
+  tbody
+    - @check.files.each do |file, errors|
+        - if errors.present?
+            tr 
+                td colspan="3" = file
+            - errors.each do |error|
+                tr
+                    td = error['message']
+                    td = error['identifier']
+                    td = "#{error['column']}:#{error['line']}"

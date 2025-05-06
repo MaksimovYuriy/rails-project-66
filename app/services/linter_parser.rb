@@ -19,7 +19,7 @@ module LinterParser
             summary = { }
             data['files'].each do |file|
                 if !file['offenses'].empty?
-                    path = file['path']
+                    path = file['path'].gsub '/tmp', 'https://github.com'
                     files[path] = []
                     file['offenses'].each do |offense|
                         files[path] << {
@@ -49,7 +49,7 @@ module LinterParser
                 offense_count += file['fatalErrorCount']
                 offense_count += file['warningCount']
 
-                path = file['filePath']
+                path = file['filePath'].gsub '/tmp', 'https://github.com'
                 files[path] = []
                 file['messages'].each do |message|
                     files[path] << {
@@ -67,6 +67,12 @@ module LinterParser
                 summary: summary
             }
         end
+    end
+
+    private
+
+    def replace_tmp_to_link(path, from, to)
+        path.gsub from, to
     end
 
 end
