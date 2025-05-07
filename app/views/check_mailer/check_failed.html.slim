@@ -1,20 +1,18 @@
-h1 Check Result
+h1 t('mail.title')
 
-p Hello, #{@check.repository&.user&.nickname}
+p t('mail.hello'), #{@check.repository&.user&.nickname}
 
-p Your check has been failed. Here are the details:
+p t('mail.message')
 
 ul
     li
-        strong Status:
+        strong t('mail.attributes.state'):
         |  #{@check.state}
     li
-        strong Started at:
+        strong t('mail.attributes.started_at'):
         |  #{@check.created_at.strftime('%Y-%m-%d %H:%M')}
     li
-        strong Repository:
+        strong t('mail.attributes.repo_link'):
         a href = @check.repository&.clone_url
         | #{@check.repository&.clone_url}
-
-p Thank you!
 
