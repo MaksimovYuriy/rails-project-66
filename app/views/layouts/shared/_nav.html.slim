@@ -11,11 +11,8 @@
                 = link_to 'Репозитории', repositories_path, class: 'btn btn-outline-light'
             li.nav-item.me-2
                 = link_to 'Добавить', new_repository_path, class: 'btn btn-outline-light'
-
-            - if true
-              li.nav-item.me-2
-                = "заглушка"
-
+            li.nav.item.me-2.link-light
+                    = current_user.email
             li.nav-item.me-2
               = button_to t('links.logout'), auth_logout_path, data: { turbo: false }, method: :delete, class: 'btn btn-outline-light'
           - else
