@@ -3,3 +3,8 @@ footer.fixed-bottom.py-1.p-0.bg-dark.text-light
         .col.d-flex.align-items-center
             p.mb-0.me-3
                 = t('footer.github')
+            p.mb-0.mr-auto
+                - if I18n.locale == :ru
+                    = link_to t('languages.en'), url_for(locale: 'en')
+                - else
+                    = link_to t('languages.ru'), url_for(locale: 'ru')

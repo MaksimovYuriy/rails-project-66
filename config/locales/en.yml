@@ -1,10 +1,56 @@
 en:
+  languages:
+    ru: 'Русский язык'
+    en: 'English'
+  links:
+    home: 'Home'
+    repositories: 'Repositories'
+    add: 'Add'
+    logout: 'Logout'
+    login: 'Login'
   mail:
     title: 'Check Result'
     message: 'Your check has been failed. Here are the details:'
     hello: 'Hello'
     attributes:
-      state: 'Status: '
-      started_at: 'Started at: '
-      repo_link: 'Repository: '
+      state: 'Status'
+      started_at: 'Started at'
+      repo_link: 'Repository'
+  repository:
+    actions:
+      check: 'Check repository'
+    attributes:
+      name: 'Name'
+      full_name: 'Full name'
+      language: 'Language'
+      created_at: 'Created at'
+      updated_at: 'Updated at'
+    check:
+      attributes:
+        id: 'ID'
+        state: 'State'
+        commit_id: 'Commit ID'
+        date: 'Date'
+      title: 'Check'
+      result:
+        attributes:
+          message: 'Message'
+          identifier: 'Identifier'
+          position: 'Position'
+  welcome:
+    description: 'The project allows you to automatically run linters on GitHub repositories.,
+      ensuring continuous compliance with coding standards and improving the quality of your software product.
+      Thanks to integration with CI/CD pipelines and configuration of verification rules,
+      Developers receive instant feedback right in the pull request interface.,
+      reducing the number of errors and speeding up the development process.'
+    functions:
+      one: 'Easy to set up and integrate with existing workflows.'
+      two: 'The ability to check repositories with different programming languages (Ruby, JavaScript).'
+      three: 'Improved code readability and support through standardization of programming style.'
+      four: 'Improving the productivity of the development team.'
+    title: 'Repository Quality Analyzer'
+
+
+
+  
 

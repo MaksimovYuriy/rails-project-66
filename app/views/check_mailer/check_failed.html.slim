@@ -1,8 +1,11 @@
-h1 t('mail.title')
+h1 
+    = t('mail.title')
 
-p t('mail.hello'), #{@check.repository&.user&.nickname}
+p 
+    = t('mail.hello'), #{@check.repository&.user&.nickname}
 
-p t('mail.message')
+p 
+    = t('mail.message')
 
 ul
     li

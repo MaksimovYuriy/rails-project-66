@@ -1,25 +1,25 @@
 strong
     h1
-        = "Проверка: #{@check.id}"
+        = "#{t('repository.check.title')}: #{@check.id}"
 
 .mb-3
-    strong Статус: 
+    strong #{t('repository.check.attributes.state')}: 
     = @check.state
 
 .mb-3
-    strong ID коммита: 
+    strong #{t('repository.check.attributes.commit_id')}: 
     = @check.try(:commit_id).to_s[0..6]
 
 .mb-3
-    strong Дата проверки: 
+    strong #{t('repository.check.attributes.created_at')}: 
     = @check.created_at
 
 table.table.table-striped.table-bordered.table-hover
   thead
     tr
-      th message
-      th identifier
-      th position
+      th = t('repository.check.result.attributes.message')
+      th = t('repository.check.result.attributes.identifier')
+      th = t('repository.check.result.attributes.position')
   tbody
     - @check.files.each do |url, errors|
         - if errors.present?

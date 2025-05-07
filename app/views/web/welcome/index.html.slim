@@ -1,18 +1,12 @@
 div.card.mx-auto.w-75.bg-light.border-dark
   div.card-body
-    h1.card-title.text-center.mb-3 = "Анализатор качества репозиториев"
+    h1.card-title.text-center.mb-3 = t('welcome.title')
     
     p.card-text.mb-3 
-      = "Проект позволяет автоматически запускать линтеры на GitHub-репозиториях, \
-      обеспечивая постоянное соблюдение стандартов кодирования и повышение качества вашего программного продукта. \
-      Благодаря интеграции с CI/CD-пайплайнами и настройке правил проверок, \
-      разработчики получают мгновенную обратную связь прямо в интерфейсе pull request'ов, \
-      сокращая количество ошибок и ускоряя процесс разработки. "
+      = t('welcome.description')
   
     ul.list-group.list-group-flush.mb-3
-      li.list-group-item Простота настройки и интеграция с существующими рабочими процессами.
-      li.list-group-item Возможность проверки репозиториев с разными языками программирования (Ruby, JavaScript).
-      li.list-group-item Улучшение читаемости и поддержки кода благодаря стандартизации стиля программирования.
-      li.list-group-item Повышение производительности команды разработчиков.
-  
-    p.card-text.text-right Присоединяйся к сообществу тех, кто заботится о качестве своего кода!
+      li.list-group-item = t('welcome.functions.one')
+      li.list-group-item = t('welcome.functions.two')
+      li.list-group-item = t('welcome.functions.three')
+      li.list-group-item = t('welcome.functions.four')

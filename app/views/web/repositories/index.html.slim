@@ -1,9 +1,9 @@
 table.table.table-striped.table-bordered.table-hover
   thead
     tr
-      th name
-      th language
-      th state
+      th = t('repository.attributes.name')
+      th = t('repository.attributes.language')
+      th = t('repository.check.attributes.state')
   tbody
     - @repositories.order(created_at: :desc).each do |repo|
       tr

@@ -2,36 +2,36 @@ strong
     h1
         = @repository.full_name
 
-= button_to 'Проверить', repository_checks_path(@repository), class: 'btn btn-primary mb-3'
+= button_to t('repository.actions.check'), repository_checks_path(@repository), class: 'btn btn-primary mb-3'
 
 .mb-3
     .mb-3
         strong 
-            = 'Название: '
+            = "#{t('repository.attributes.full_name')}: "
         = @repository.full_name
 
     .mb-3
         strong 
-            = 'Язык: '
+            = "#{t('repository.attributes.language')}: "
         = @repository.language
 
     .mb-3
         strong 
-            = 'Дата создания: '
+            = "#{t('repository.attributes.created_at')}: "
         = @repository.created_at
 
     .mb-3
         strong 
-            = 'Дата обновления: '
+            = "#{t('repository.attributes.updated_at')}: "
         = @repository.updated_at
 
 table.table.table-striped.table-bordered.table-hover
   thead
     tr
-      th id
-      th state
-      th commit_id
-      th date
+      th = t('repository.check.attributes.id')
+      th = t('repository.check.attributes.state')
+      th = t('repository.check.attributes.commit_id')
+      th = t('repository.check.attributes.date')
   tbody
     - @repository.checks.order(created_at: :desc).each do |check|
       tr
