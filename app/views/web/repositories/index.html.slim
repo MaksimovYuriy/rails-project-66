@@ -9,4 +9,4 @@ table.table.table-striped.table-bordered.table-hover
       tr
         td = link_to repo.name, repository_path(repo)
         td = repo.language
-        td = repo.checks.last&.state
+        td = t("state.#{repo.checks.last&.state}")

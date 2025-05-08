@@ -16,6 +16,15 @@ ru:
       state: 'Статус'
       started_at: 'Начата'
       repo_link: 'Репозиторий'
+  notice:
+    auth:
+      error: 'Ошибка при авторизации'
+      success: 'Выполнен вход'
+      logout: 'Выполнен выход'
+      not_authorized: 'Необходимо авторизоваться'
+    repository:
+      add: 'Репозиторий добавлен'
+      add_error: 'Ошибка при добавлении'
   repository:
     actions:
       check: 'Проверить репозиторий'
@@ -30,6 +39,7 @@ ru:
         id: 'ID'
         state: 'Статус'
         commit_id: 'Коммит'
+        created_at: 'Создана'
         date: 'Дата'
       title: 'Проверка'
       result:
@@ -37,6 +47,12 @@ ru:
           message: 'Сообщение'
           identifier: 'Идентификатор'
           position: 'Позиция'
+  state:
+    created: 'Создана'
+    cloning: 'Клонирование'
+    running: 'Выполнение'
+    successful: 'Успешно'
+    failed: 'Неудачно'
   welcome:
     description: 'Проект позволяет автоматически запускать линтеры на GitHub-репозиториях,
       обеспечивая постоянное соблюдение стандартов кодирования и повышение качества вашего программного продукта.

@@ -16,6 +16,15 @@ en:
       state: 'Status'
       started_at: 'Started at'
       repo_link: 'Repository'
+  notice:
+    auth:
+      error: 'You need to log in again'
+      success: 'You are logged in'
+      logout: 'You have logged out'
+      not_authorized: 'You need to log in'
+    repository:
+      add: 'Repository added'
+      add_error: 'Error when adding'
   repository:
     actions:
       check: 'Check repository'
@@ -30,6 +39,7 @@ en:
         id: 'ID'
         state: 'State'
         commit_id: 'Commit ID'
+        created_at: 'Created At'
         date: 'Date'
       title: 'Check'
       result:
@@ -37,6 +47,12 @@ en:
           message: 'Message'
           identifier: 'Identifier'
           position: 'Position'
+  state:
+    created: 'Created'
+    cloning: 'Cloning'
+    running: 'Running'
+    successful: 'Successful'
+    failed: 'Failed'
   welcome:
     description: 'The project allows you to automatically run linters on GitHub repositories.,
       ensuring continuous compliance with coding standards and improving the quality of your software product.

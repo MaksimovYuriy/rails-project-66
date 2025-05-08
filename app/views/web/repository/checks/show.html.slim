@@ -4,7 +4,7 @@ strong
 
 .mb-3
     strong #{t('repository.check.attributes.state')}: 
-    = @check.state
+    = t("state.#{@check.state}")
 
 .mb-3
     strong #{t('repository.check.attributes.commit_id')}: 

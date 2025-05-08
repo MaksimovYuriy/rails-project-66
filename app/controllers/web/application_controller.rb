@@ -14,7 +14,7 @@ module Web
     def authenticate_user!
       return if session[:user_id].present?
 
-      redirect_to root_path, notice: 'Not authorized'
+      redirect_to root_path, notice: I18n.t('notice.auth.not_authorized')
     end
 
     def get_filename_from_url(url)

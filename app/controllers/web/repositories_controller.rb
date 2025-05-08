@@ -30,9 +30,9 @@ module Web
         @repository.clone_url = target_repository.clone_url
         @repository.ssh_url = target_repository.ssh_url
         @repository.save
-        redirect_to repositories_path, notice: 'Репозиторий добавлен'
+        redirect_to repositories_path, notice: I18n.t('notice.repository.add')
       else
-        redirect_to repositories_path, notice: 'Добавляемый репозиторий не найден'
+        redirect_to repositories_path, notice: I18n.t('notice.repository.add_error')
       end
     end
 
@@ -49,7 +49,7 @@ module Web
       @github_repositories = Rails.cache.fetch("github_repositories_#{current_user.id}", expires_in: 1.hour) do
         github_client.repos.select { |repo| LANGUAGES.include?(repo.language) }
       rescue Octokit::Unauthorized
-        redirect_to root_path, notice: 'Необходимо авторизироваться заново'
+        redirect_to root_path, notice: I18n.t('notice.auth.error')
       end
     end
 

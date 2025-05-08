@@ -11,17 +11,17 @@ module Web
       user.save!
 
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'Logged'
+      redirect_to root_path, notice: I18n.t('notice.auth.success')
     end
 
     def failure
       session[:user_id] = nil
-      redirect_to root_path, notice: 'Failure'
+      redirect_to root_path, notice: I18n.t('notice.auth.error')
     end
 
     def logout
       session[:user_id] = nil
-      redirect_to root_path, notice: 'Logout'
+      redirect_to root_path, notice: I18n.t('notice.auth.logout')
     end
   end
 end
