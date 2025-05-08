@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 module RailsProject66
   class Application < Rails::Application
     config.after_initialize do
-      routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
+      routes.default_url_options = { host: ENV.fetch('BASE_URL', 'localhost') }
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
