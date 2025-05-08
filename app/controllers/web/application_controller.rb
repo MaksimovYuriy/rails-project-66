@@ -20,11 +20,11 @@ module Web
     def get_filename_from_url(url)
       parts = url.to_s.split('/')
       return if parts.size < 2
-      
-      if parts[-2] != 'main'
-        File.join(parts[-2], parts[-1])
-      else
+
+      if parts[-2] == 'main'
         parts[-1]
+      else
+        File.join(parts[-2], parts[-1])
       end
     end
 

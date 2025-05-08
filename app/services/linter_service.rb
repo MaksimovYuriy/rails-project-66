@@ -28,9 +28,7 @@ class LinterService
     @check.to_clone!
     clone_path = "#{@output_dir}/#{@temp_dir}"
 
-    if Dir.exist?(clone_path)
-      FileUtils.rm_rf(clone_path)
-    end
+    FileUtils.rm_rf(clone_path)
 
     cmd = "git clone #{@clone_url} #{clone_path}"
     _, stderr, status = Open3.capture3(cmd)
@@ -62,7 +60,7 @@ class LinterService
     end
 
     stdout, stderr, status = Open3.capture3(cmd)
-    
+
     parsed_data = LinterParser.parse(@language, stdout)
 
     case status.exitstatus
@@ -84,8 +82,8 @@ class LinterService
   end
 
   def send_mail
-    if @check.failed?
-      CheckMailer.check_failed(@check).deliver_now
-    end
+    return unless @check.failed?
+
+    CheckMailer.check_failed(@check).deliver_now
   end
 end

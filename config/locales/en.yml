@@ -12,6 +12,7 @@ en:
     title: 'Check Result'
     message: 'Your check has been failed. Here are the details:'
     hello: 'Hello'
+    subject: 'Check Failed'
     attributes:
       state: 'Status'
       started_at: 'Started at'

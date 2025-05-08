@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 module RailsProject66
   class Application < Rails::Application
     config.after_initialize do
-      routes.default_url_options = { host: ENV['BASE_URL'] }
+      routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
@@ -28,7 +28,7 @@ module RailsProject66
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.i18n.available_locales = [:en, :ru]
+    config.i18n.available_locales = %i[en ru]
     config.i18n.default_locale = :en
   end
 end

@@ -19,7 +19,7 @@ module Web
         before_count = @repository.checks.count
         post repository_checks_path(@repository), params: {}
 
-        assert { @repository.checks.count == before_count + 1}
+        assert { @repository.checks.count == before_count + 1 }
       end
 
       test 'show page unauthorized' do
@@ -33,7 +33,7 @@ module Web
 
         get repository_check_path(@check.repository, @check)
 
-        assert_response :success        
+        assert_response :success
       end
     end
   end

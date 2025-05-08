@@ -106,11 +106,11 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV['USER_NAME'],
-    password: ENV['PASSWORD'],
-    address: ENV['ADDRESS'],
-    host: ENV['HOST'],
-    port: ENV['MAIL_PORT'],
+    user_name: ENV.fetch('USER_NAME', nil),
+    password: ENV.fetch('PASSWORD', nil),
+    address: ENV.fetch('ADDRESS', nil),
+    host: ENV.fetch('HOST', nil),
+    port: ENV.fetch('MAIL_PORT', nil),
     authentication: :plain
   }
 end
