@@ -21,11 +21,7 @@ jobs:
         run: chmod +x bin/rubocop; chmod +x bin/brakeman; chmod +x bin/rails
 
       - name: Install dependencies
-        run: |
-          echo "Setting environment variables..."
-          export GITHUB_CLIENT_ID=${{ ENV['GITHUB_CLIENT_ID'] }}
-          export GITHUB_CLIENT_SECRET=${{ ENV['GITHUB_CLIENT_SECRET'] }}
-          make setup
+        run: make setup
 
       - name: Run tests
         run: make tests
