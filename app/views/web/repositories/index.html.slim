@@ -9,4 +9,8 @@ table.table.table-striped.table-bordered.table-hover
       tr
         td = link_to repo.name, repository_path(repo)
         td = repo.language
-        td = t("state.#{repo.checks.last&.state}")
+
+        - if repo.checks.last&.state.present?
+          td = t("state.#{repo.checks.last&.state}")
+        - else
+          td = ''

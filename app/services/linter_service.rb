@@ -17,7 +17,6 @@ class LinterService
     clone_repo
     run_linter
     cleanup
-    debugger
   rescue StandardError
     @check.fail!
     CheckMailer.check_failed(@check).deliver_now

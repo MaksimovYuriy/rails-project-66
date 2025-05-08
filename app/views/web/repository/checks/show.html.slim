@@ -14,19 +14,20 @@ strong
     strong #{t('repository.check.attributes.created_at')}: 
     = @check.created_at
 
-table.table.table-striped.table-bordered.table-hover
-  thead
-    tr
-      th = t('repository.check.result.attributes.message')
-      th = t('repository.check.result.attributes.identifier')
-      th = t('repository.check.result.attributes.position')
-  tbody
-    - @check.files.each do |url, errors|
-        - if errors.present?
-            tr 
-                td colspan="3" = link_to get_filename_from_url(url), url
-            - errors.each do |error|
-                tr
-                    td = error['message']
-                    td = error['identifier']
-                    td = "#{error['column']}:#{error['line']}"
+- if @check.failed?
+    table.table.table-striped.table-bordered.table-hover
+        thead
+            tr
+            th = t('repository.check.result.attributes.message')
+            th = t('repository.check.result.attributes.identifier')
+            th = t('repository.check.result.attributes.position')
+        tbody
+            - @check.files.each do |url, errors|
+                - if errors.present?
+                    tr 
+                        td colspan="3" = link_to get_filename_from_url(url), url
+                    - errors.each do |error|
+                        tr
+                            td = error['message']
+                            td = error['identifier']
+                            td = "#{error['column']}:#{error['line']}"

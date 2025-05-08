@@ -31,7 +31,6 @@ module Web
 
             user = User.find_by(email: auth_hash[:info][:email])
 
-            debugger
             assert user
             assert signed_in?
         end
