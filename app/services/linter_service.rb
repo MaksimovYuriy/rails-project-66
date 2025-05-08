@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require 'open3'
+require_relative 'linter_parser/linter_parser'
+require_relative 'linter_parser/rubocop_parser'
+require_relative 'linter_parser/eslint_parser'
+require_relative 'linter_parser/linter_helpers'
 
 class LinterService
   extend LinterParser
