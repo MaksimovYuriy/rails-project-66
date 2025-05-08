@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'rubocop_parser'
-require_relative 'eslint_parser'
+require_relative 'linter_parser/rubocop_parser'
+require_relative 'linter_parser/eslint_parser'
 
 module LinterParser
   def self.parse(language, data)
