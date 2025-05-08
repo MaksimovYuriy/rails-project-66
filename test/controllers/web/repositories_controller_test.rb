@@ -6,7 +6,9 @@ module Web
   class RepositoriesControllerTest < ActionDispatch::IntegrationTest
     setup do
       @github_repos_url = 'https://api.github.com/user/repos'
+
       @user = users(:user)
+      @repo = repositories(:one)
 
       @attrs = {
         github_id: 2
@@ -68,6 +70,20 @@ module Web
 
       assert_response :redirect
       assert { repository }
+    end
+
+    test 'show page unauthorized' do
+      get repository_path(@repo)
+
+      assert_response :redirect
+    end
+
+    test 'show page authorized' do
+      sign_in @user
+
+      get repository_path(@repo)
+
+      assert_response :success
     end
   end
 end

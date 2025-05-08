@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class LinterServiceStub
-  def initialize(clone_url, check, language, output_dir: '/tmp')
+  def initialize(clone_url, check, language, repo_full_name, output_dir: '/tmp')
     @clone_url = clone_url
     @check = check
     @language = language
     @output_dir = output_dir
-    @temp_dir = generate_temp_dir
+    @temp_dir = repo_full_name
   end
 
   def call
@@ -30,10 +30,6 @@ class LinterServiceStub
     @check.run!
     output = 'some output of linter'
     @check.update!(output: output)
-  end
-
-  def generate_temp_dir
-    SecureRandom.hex(8)
   end
 
   def cleanup; end
