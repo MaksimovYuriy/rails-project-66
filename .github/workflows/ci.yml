@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-    
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -19,12 +19,15 @@ jobs:
 
       - name: Permissions
         run: chmod +x bin/rubocop; chmod +x bin/brakeman; chmod +x bin/rails
-      
-      - name: Install
-        run: make setup
 
-      - name: Tests
+      - name: Install dependencies
+        run: |
+          echo "Setting environment variables..."
+          export GITHUB_CLIENT_ID=${{ ENV['GITHUB_CLIENT_ID'] }}
+          export GITHUB_CLIENT_SECRET=${{ ENV['GITHUB_CLIENT_SECRET'] }}
+          make setup
+
+      - name: Run tests
         run: make tests
-      
-      - name: Linters
+      - name: Run linters
         run: make lint
