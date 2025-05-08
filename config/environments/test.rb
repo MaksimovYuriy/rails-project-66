@@ -8,7 +8,6 @@ require 'active_support/core_ext/integer/time'
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
-  Rails.application.routes.default_url_options[:host] = 'localhost'
 
   config.active_job.queue_adapter = :inline
   # Settings specified here will take precedence over those in config/application.rb.
@@ -69,4 +68,6 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
+
+  Rails.application.routes.default_url_options[:host] = 'localhost'
 end
