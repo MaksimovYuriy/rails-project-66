@@ -9,7 +9,7 @@ module LinterParser
              when 'Ruby'
                RubocopParser
              when 'JavaScript'
-               ESLintParser
+               EslintParser
              else
                raise "Unsupported linter: #{language}"
              end

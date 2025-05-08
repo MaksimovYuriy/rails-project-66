@@ -3,7 +3,7 @@
 require_relative 'linter_helpers'
 
 module LinterParser
-  class ESLintParser
+  class EslintParser
     extend LinterHelpers
 
     def self.parse(data)
