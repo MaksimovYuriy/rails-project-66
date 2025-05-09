@@ -25,8 +25,8 @@ gem 'dry-container'
 gem 'aasm'
 gem 'securerandom'
 
-gem 'pundit'
 gem 'faker'
+gem 'pundit'
 
 gem 'rubocop-rails-omakase', require: false
 
