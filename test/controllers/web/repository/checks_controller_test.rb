@@ -17,7 +17,10 @@ module Web
         sign_in @user
 
         before_count = @repository.checks.count
-        post repository_checks_path(@repository), params: {}
+
+        perform_enqueued_jobs do
+          post repository_checks_path(@repository), params: {}
+        end
 
         assert { @repository.checks.count == before_count + 1 }
       end
