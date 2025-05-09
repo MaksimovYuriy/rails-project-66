@@ -5,12 +5,17 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def create
-      event = request.headers['X-GitHub-Event']
-      return head :bad_request unless event == 'push'
 
-      payload = JSON.parse(request.body.read)
+      if request.format.json? || request.headers['X-GitHub-Event'].present?
+        event = request.headers['X-GitHub-Event']
+        return head :bad_request unless event == 'push'
 
-      github_id = payload.dig('repository', 'id')
+        payload = JSON.parse(request.body.read)
+        github_id = payload.dig('repository', 'id')
+      else
+        github_id = params.dig(:repository, :id)
+      end
+
 
       repository = ::Repository.find_by(github_id: github_id)
 
