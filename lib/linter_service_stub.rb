@@ -13,7 +13,7 @@ class LinterServiceStub
     clone_repo
     run_linter
     cleanup
-    @check.complete!
+    @check.finish!
   rescue StandardError
     @check.fail!
   end

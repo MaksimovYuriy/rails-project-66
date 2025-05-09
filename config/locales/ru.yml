@@ -54,7 +54,7 @@ ru:
     created: 'Создана'
     cloning: 'Клонирование'
     running: 'Выполнение'
-    completed: 'Завершено'
+    finished: 'Завершено'
     failed: 'Неудачно'
   passed:
     true: 'Да'

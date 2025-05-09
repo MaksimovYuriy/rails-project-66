@@ -2,6 +2,6 @@
 
 one_repo_check:
   repository: one
-  aasm_state: "completed"
+  aasm_state: "finished"
   output: "test output"
   commit_id: "test_commit_id"

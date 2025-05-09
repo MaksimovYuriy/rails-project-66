@@ -54,7 +54,7 @@ en:
     created: 'Created'
     cloning: 'Cloning'
     running: 'Running'
-    completed: 'Completed'
+    finished: 'Finished'
     failed: 'Failed'
   passed:
     true: 'True'
