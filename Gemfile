@@ -26,6 +26,7 @@ gem 'aasm'
 gem 'securerandom'
 
 gem 'pundit'
+gem 'faker'
 
 gem 'rubocop-rails-omakase', require: false
 

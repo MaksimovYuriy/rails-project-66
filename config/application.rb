@@ -10,6 +10,8 @@ Bundler.require(*Rails.groups)
 
 module RailsProject66
   class Application < Rails::Application
+    config.autoload_paths += %W[#{config.root}/lib]
+
     config.after_initialize do
       routes.default_url_options = { host: ENV.fetch('BASE_URL', 'localhost') }
     end

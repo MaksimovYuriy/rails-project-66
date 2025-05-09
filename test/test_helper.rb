@@ -4,8 +4,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'helpers/test_helpers'
-require 'helpers/octokit_client_stub'
-require 'helpers/linter_service_stub'
 
 require 'webmock/minitest'
 
