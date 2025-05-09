@@ -6,7 +6,7 @@ class OctokitClientStub
   end
 
   def repos
-    fixture_path = File.expand_path('../test/fixtures/files/response.json', __dir__)
+    fixture_path = Rails.root.join('test', 'fixtures', 'files', 'response.json')
     repositories = JSON.parse(File.read(fixture_path))
     repositories.map { |repo| Repository.new(repo) }
   end

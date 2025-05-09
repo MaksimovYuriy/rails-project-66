@@ -29,7 +29,7 @@ class LinterServiceStub
   def run_linter
     @check.run!
     output = 'some output of linter'
-    @check.update!(output: output)
+    @check.update!(output: output, passed: true)
   end
 
   def cleanup; end
