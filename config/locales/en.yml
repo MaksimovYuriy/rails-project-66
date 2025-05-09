@@ -23,6 +23,7 @@ en:
       success: 'You are logged in'
       logout: 'You have logged out'
       not_authorized: 'You need to log in'
+      no_rights: 'You dont have enough rights'
     repository:
       add: 'Repository added'
       add_error: 'Error when adding'

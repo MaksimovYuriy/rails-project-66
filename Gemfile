@@ -25,6 +25,8 @@ gem 'dry-container'
 gem 'aasm'
 gem 'securerandom'
 
+gem 'pundit'
+
 gem 'rubocop-rails-omakase', require: false
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

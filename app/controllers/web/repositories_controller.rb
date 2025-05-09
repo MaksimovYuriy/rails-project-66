@@ -12,6 +12,7 @@ module Web
 
     def show
       @repository = ::Repository.find(params[:id])
+      authorize @repository, policy_class: Web::RepositoryPolicy
     end
 
     def new

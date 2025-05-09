@@ -8,6 +8,7 @@ module Web
 
       def show
         @check = ::Repository::Check.find(params[:id])
+        authorize @check, policy_class: Web::Repository::CheckPolicy
       end
 
       def create
