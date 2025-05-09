@@ -5,9 +5,9 @@ class Repository::Check < ApplicationRecord
 
   include AASM
 
-  aasm column: 'state' do
+  aasm column: 'aasm_state' do
     state :created, initial: true
-    state :cloning, :running, :successful, :failed
+    state :cloning, :running, :completed, :failed
 
     event :to_clone do
       transitions from: :created, to: :cloning
@@ -17,8 +17,8 @@ class Repository::Check < ApplicationRecord
       transitions from: :cloning, to: :running
     end
 
-    event :success do
-      transitions from: :running, to: :successful
+    event :complete do
+      transitions from: :running, to: :completed
     end
 
     event :fail do

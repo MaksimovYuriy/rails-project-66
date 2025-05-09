@@ -7,8 +7,8 @@
 
   ul.list-group
     li.list-group-item
-      strong = "#{t('mail.attributes.state')}:"
-      |  #{@check.state}
+      strong = "#{t('mail.attributes.aasm_state')}:"
+      |  #{@check.aasm_state}
     li.list-group-item
       strong = "#{t('mail.attributes.started_at')}:"
       |  #{@check.created_at.strftime('%Y-%m-%d %H:%M')}"

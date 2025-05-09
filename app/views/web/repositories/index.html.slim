@@ -3,14 +3,12 @@ table.table.table-striped.table-bordered.table-hover
     tr
       th = t('repository.attributes.name')
       th = t('repository.attributes.language')
-      th = t('repository.check.attributes.state')
+      th = t('repository.check.attributes.passed')
   tbody
     - @repositories.order(created_at: :desc).each do |repo|
       tr
         td = link_to repo.name, repository_path(repo)
         td = repo.language
 
-        - if repo.checks.last&.state.present?
-          td = t("state.#{repo.checks.last&.state}")
-        - else
-          td = ''
+        - check = repo.checks.last
+        td = check&.passed.nil? ? '' : t("passed.#{check.passed}")

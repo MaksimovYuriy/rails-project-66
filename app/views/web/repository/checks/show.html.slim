@@ -3,8 +3,12 @@ strong
         = "#{t('repository.check.title')}: #{@check.id}"
 
 .mb-3
-    strong #{t('repository.check.attributes.state')}: 
-    = t("state.#{@check.state}")
+    strong #{t('repository.check.attributes.aasm_state')}: 
+    = t("aasm_state.#{@check.aasm_state}")
+
+.mb-3
+    strong #{t('repository.check.attributes.passed')} 
+    = @check.passed.nil? ? '' : t("passed.#{@check.passed}")
 
 .mb-3
     strong #{t('repository.check.attributes.commit_id')}: 
@@ -14,7 +18,7 @@ strong
     strong #{t('repository.check.attributes.created_at')}: 
     = @check.created_at
 
-- if @check.failed?
+- if !@check.passed?
     table.table.table-striped.table-bordered.table-hover
         thead
             tr

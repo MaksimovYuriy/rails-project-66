@@ -29,13 +29,15 @@ table.table.table-striped.table-bordered.table-hover
   thead
     tr
       th = t('repository.check.attributes.id')
-      th = t('repository.check.attributes.state')
+      th = t('repository.check.attributes.aasm_state')
       th = t('repository.check.attributes.commit_id')
+      th = t('repository.check.attributes.passed')
       th = t('repository.check.attributes.date')
   tbody
     - @repository.checks.order(created_at: :desc).each do |check|
       tr
         td = link_to check.id, repository_check_path(@repository, check)
-        td = t("state.#{check.state}")
+        td = t("state.#{check.aasm_state}")
         td = link_to check.try(:commit_id).to_s[0..6], get_url_from_commit_id(check.repository.clone_url, check.commit_id)
+        td = check.passed.nil? ? '' : t("passed.#{check.passed}")
         td = check.created_at

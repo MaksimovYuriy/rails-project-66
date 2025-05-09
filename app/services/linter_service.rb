@@ -66,11 +66,11 @@ class LinterService
 
     case status.exitstatus
     when 0
-      @check.update!(output: stdout, files: parsed_data[:files], summary: parsed_data[:summary])
-      @check.success!
+      @check.update!(output: stdout, files: parsed_data[:files], summary: parsed_data[:summary], passed: true)
+      @check.complete!
     when 1
-      @check.update!(output: stdout, files: parsed_data[:files], summary: parsed_data[:summary])
-      raise 'Linter errors!'
+      @check.update!(output: stdout, files: parsed_data[:files], summary: parsed_data[:summary], passed: false)
+      @check.complete!
     when 2
       @check.update!(output: stderr)
       raise 'Startup error!'

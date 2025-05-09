@@ -14,7 +14,7 @@ ru:
     hello: 'Привет'
     subject: 'Проверка не пройдена'
     attributes:
-      state: 'Статус'
+      aasm_state: 'Статус'
       started_at: 'Начата'
       repo_link: 'Репозиторий'
   notice:
@@ -39,7 +39,8 @@ ru:
     check:
       attributes:
         id: 'ID'
-        state: 'Статус'
+        aasm_state: 'Статус'
+        passed: 'Проверка пройдена?'
         commit_id: 'Коммит'
         created_at: 'Создана'
         date: 'Дата'
@@ -49,12 +50,15 @@ ru:
           message: 'Сообщение'
           identifier: 'Идентификатор'
           position: 'Позиция'
-  state:
+  aasm_state:
     created: 'Создана'
     cloning: 'Клонирование'
     running: 'Выполнение'
-    successful: 'Успешно'
+    completed: 'Завершено'
     failed: 'Неудачно'
+  passed:
+    true: 'Да'
+    false: 'Нет'
   welcome:
     description: 'Проект позволяет автоматически запускать линтеры на GitHub-репозиториях,
       обеспечивая постоянное соблюдение стандартов кодирования и повышение качества вашего программного продукта.

@@ -14,7 +14,7 @@ en:
     hello: 'Hello'
     subject: 'Check Failed'
     attributes:
-      state: 'Status'
+      aasm_state: 'Status'
       started_at: 'Started at'
       repo_link: 'Repository'
   notice:
@@ -39,7 +39,8 @@ en:
     check:
       attributes:
         id: 'ID'
-        state: 'State'
+        aasm_state: 'State'
+        passed: 'Check passed?'
         commit_id: 'Commit ID'
         created_at: 'Created At'
         date: 'Date'
@@ -49,12 +50,15 @@ en:
           message: 'Message'
           identifier: 'Identifier'
           position: 'Position'
-  state:
+  aasm_state:
     created: 'Created'
     cloning: 'Cloning'
     running: 'Running'
-    successful: 'Successful'
+    completed: 'Completed'
     failed: 'Failed'
+  passed:
+    true: 'True'
+    false: 'False'
   welcome:
     description: 'The project allows you to automatically run linters on GitHub repositories.,
       ensuring continuous compliance with coding standards and improving the quality of your software product.
