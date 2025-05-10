@@ -23,6 +23,7 @@ module Api
       end
 
       RepositoryCheckJob.perform_later(repository)
+      head :ok
     end
   end
 end
