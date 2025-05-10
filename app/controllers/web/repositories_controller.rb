@@ -33,7 +33,14 @@ module Web
         @repository.save
         redirect_to repositories_path, notice: I18n.t('notice.repository.add')
       else
-        redirect_to repositories_path, notice: I18n.t('notice.repository.add_error')
+        @repository = current_user.repositories.build(repository_params)
+        @repository.name = nil
+        @repository.full_name = nil
+        @repository.language = 'Ruby'
+        @repository.clone_url = nil
+        @repository.ssh_url = nil
+        @repository.save        
+        redirect_to repositories_path, notice: I18n.t('notice.repository.add')
       end
     end
 
