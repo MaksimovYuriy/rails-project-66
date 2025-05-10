@@ -23,7 +23,6 @@ module Api
       end
 
       RepositoryCheckJob.perform_later(repository)
-      redirect_to repository_path(repository)
     end
   end
 end
