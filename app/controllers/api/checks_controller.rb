@@ -5,10 +5,10 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def create
-
       if request.headers['X-GitHub-Event'].present?
         event = request.headers['X-GitHub-Event']
         return head :bad_request unless event == 'push'
+
         payload = JSON.parse(request.body.read)
         github_id = payload.dig('repository', 'id')
       else

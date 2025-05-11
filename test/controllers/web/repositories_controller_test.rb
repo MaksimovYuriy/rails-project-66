@@ -11,7 +11,7 @@ module Web
       @repo = repositories(:one)
 
       @attrs = {
-        github_id: 535535
+        github_id: 535_535
       }
 
       Rails.cache.clear

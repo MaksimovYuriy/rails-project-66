@@ -23,25 +23,22 @@ module Web
     def create
       load_github_repositories
       target_repository = @github_repositories.find { |repo| repo.id.to_s == repository_params[:github_id] }
+      @repository = current_user.repositories.build(repository_params)
       if target_repository
-        @repository = current_user.repositories.build(repository_params)
         @repository.name = target_repository.name
         @repository.full_name = target_repository.full_name
         @repository.language = target_repository.language
         @repository.clone_url = target_repository.clone_url
         @repository.ssh_url = target_repository.ssh_url
-        @repository.save
-        redirect_to repositories_path, notice: I18n.t('notice.repository.add')
       else
-        @repository = current_user.repositories.build(repository_params)
         @repository.name = 'default'
         @repository.full_name = 'default'
         @repository.language = 'Ruby'
         @repository.clone_url = 'default'
         @repository.ssh_url = 'default'
-        @repository.save        
-        redirect_to repositories_path, notice: I18n.t('notice.repository.add')
       end
+      @repository.save
+      redirect_to repositories_path, notice: I18n.t('notice.repository.add')
     end
 
     private
