@@ -3,22 +3,22 @@ strong
         = "#{t('repository.check.title')}: #{@check.id}"
 
 .mb-3
-    strong #{t('repository.check.attributes.aasm_state')}: 
+    strong #{t('repository.check.attributes.aasm_state')}:
     = t("aasm_state.#{@check.aasm_state}")
 
 .mb-3
-    strong #{t('repository.check.attributes.passed')} 
+    strong #{t('repository.check.attributes.passed')}
     = @check.passed.nil? ? '' : t("passed.#{@check.passed}")
 
 .mb-3
-    strong #{t('repository.check.attributes.commit_id')}: 
+    strong #{t('repository.check.attributes.commit_id')}:
     = @check.try(:commit_id).to_s[0..6]
 
 .mb-3
-    strong #{t('repository.check.attributes.created_at')}: 
+    strong #{t('repository.check.attributes.created_at')}:
     = @check.created_at
 
-- if !@check.passed?
+- unless @check.passed?
     table.table.table-striped.table-bordered.table-hover
         thead
             tr
@@ -28,7 +28,7 @@ strong
         tbody
             - @check.files.each do |url, errors|
                 - if errors.present?
-                    tr 
+                    tr
                         td colspan="3" = link_to get_filename_from_url(url), url
                     - errors.each do |error|
                         tr
