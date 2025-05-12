@@ -18,12 +18,12 @@ strong
     .mb-3
         strong
             = "#{t('repository.attributes.created_at')}: "
-        = @repository.created_at
+        = @repository.created_at.strftime('%d.%m.%Y %H:%M:%S')
 
     .mb-3
         strong
             = "#{t('repository.attributes.updated_at')}: "
-        = @repository.updated_at
+        = @repository.updated_at.strftime('%d.%m.%Y %H:%M:%S')
 
 table.table.table-striped.table-bordered.table-hover
   thead
@@ -40,4 +40,4 @@ table.table.table-striped.table-bordered.table-hover
         td = t("state.#{check.aasm_state}")
         td = link_to check.try(:commit_id).to_s[0..6], get_url_from_commit_id(check.repository.clone_url, check.commit_id)
         td = check.passed.nil? ? '' : t("passed.#{check.passed}")
-        td = check.created_at
+        td = check.created_at.strftime('%d.%m.%Y %H:%M:%S')

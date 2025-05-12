@@ -2,25 +2,32 @@ strong
     h1
         = "#{t('repository.check.title')}: #{@check.id}"
 
+= link_to t('links.repository'), repository_path(@check.repository), class: 'btn btn-primary'
+
 .mb-3
-    strong #{t('repository.check.attributes.aasm_state')}:
+    strong
+        = "#{t('repository.check.attributes.aasm_state')}: "
     = t("aasm_state.#{@check.aasm_state}")
 
 .mb-3
-    strong #{t('repository.check.attributes.passed')}
+    strong
+        = "#{t('repository.check.attributes.passed')} "
     = @check.passed.nil? ? '' : t("passed.#{@check.passed}")
 
 .mb-3
-    strong #{t('repository.check.attributes.commit_id')}:
+    strong
+        = "#{t('repository.check.attributes.commit_id')}: "
     = @check.try(:commit_id).to_s[0..6]
 
 .mb-3
-    strong #{t('repository.check.attributes.warnings_count')}:
+    strong
+        = "#{t('repository.check.attributes.warnings_count')}: "
     = @check.summary['offense_count']
 
 .mb-3
-    strong #{t('repository.check.attributes.created_at')}:
-    = @check.created_at
+    strong
+        = "#{t('repository.check.attributes.created_at')}: "
+    = @check.created_at.strftime('%d.%m.%Y %H:%M:%S')
 
 - unless @check.passed?
     table.table.table-striped.table-bordered.table-hover

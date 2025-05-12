@@ -5,6 +5,7 @@ en:
   links:
     home: 'Home'
     repositories: 'Repositories'
+    repository: 'Repository'
     add: 'Add'
     logout: 'Logout'
     login: 'Login'

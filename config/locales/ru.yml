@@ -5,6 +5,7 @@ ru:
   links:
     home: 'Главная'
     repositories: 'Репозитории'
+    repository: 'Репозиторий'
     add: 'Добавить'
     logout: 'Выйти'
     login: 'Войти'
