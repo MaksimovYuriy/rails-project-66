@@ -44,6 +44,7 @@ en:
         commit_id: 'Commit ID'
         created_at: 'Created At'
         date: 'Date'
+        warnings_count: 'Warning count'
       title: 'Check'
       result:
         attributes:

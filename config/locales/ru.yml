@@ -44,6 +44,7 @@ ru:
         commit_id: 'Коммит'
         created_at: 'Создана'
         date: 'Дата'
+        warnings_count: 'количество замечаний'
       title: 'Проверка'
       result:
         attributes:

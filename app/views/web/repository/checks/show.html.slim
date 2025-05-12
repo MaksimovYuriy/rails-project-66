@@ -15,6 +15,10 @@ strong
     = @check.try(:commit_id).to_s[0..6]
 
 .mb-3
+    strong #{t('repository.check.attributes.warnings_count')}:
+    = @check.summary['offense_count']
+
+.mb-3
     strong #{t('repository.check.attributes.created_at')}:
     = @check.created_at
 
