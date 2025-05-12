@@ -30,6 +30,7 @@ module Web
         @repository.language = target_repository.language
         @repository.clone_url = target_repository.clone_url
         @repository.ssh_url = target_repository.ssh_url
+        create_hook(target_repository.full_name)
       elsif !repository_params[:github_id].empty?
         @repository.name = 'default'
         @repository.full_name = 'default'
@@ -58,6 +59,28 @@ module Web
         github_client.repos.select { |repo| LANGUAGES.include?(repo.language) }
       rescue Octokit::Unauthorized
         redirect_to root_path, notice: I18n.t('notice.auth.error')
+      end
+    end
+
+    def create_hook(repo_full_name)
+      existing_hooks = github_client.hooks(repo_full_name)
+      hook_exists = existing_hooks.any? do |hook|
+        hook.config['url'] == "#{ENV['BASE_URL']}/api/checks"
+      end
+
+      unless hook_exists
+        github_client.create_hook(
+          repo_full_name,
+          'web',
+          {
+            url: "#{ENV['BASE_URL']}/api/checks",
+            content_type: 'json'
+          },
+          {
+            events: ['push'],
+            active: true
+          }
+        )
       end
     end
 
