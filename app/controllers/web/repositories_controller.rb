@@ -30,12 +30,15 @@ module Web
         @repository.language = target_repository.language
         @repository.clone_url = target_repository.clone_url
         @repository.ssh_url = target_repository.ssh_url
-      else
+      elsif !repository_params[:github_id].empty?
         @repository.name = 'default'
         @repository.full_name = 'default'
         @repository.language = 'Ruby'
         @repository.clone_url = 'default'
         @repository.ssh_url = 'default'
+      else
+        redirect_to repositories_path, notice: I18n.t('notice.repository.add_error')
+        return
       end
       @repository.save
       redirect_to repositories_path, notice: I18n.t('notice.repository.add')
