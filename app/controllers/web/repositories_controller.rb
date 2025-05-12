@@ -65,23 +65,23 @@ module Web
     def create_hook(repo_full_name)
       existing_hooks = github_client.hooks(repo_full_name)
       hook_exists = existing_hooks.any? do |hook|
-        hook.config['url'] == "#{ENV['BASE_URL']}/api/checks"
+        hook.config['url'] == "#{ENV.fetch('BASE_URL', nil)}/api/checks"
       end
 
-      unless hook_exists
-        github_client.create_hook(
-          repo_full_name,
-          'web',
-          {
-            url: "#{ENV['BASE_URL']}/api/checks",
-            content_type: 'json'
-          },
-          {
-            events: ['push'],
-            active: true
-          }
-        )
-      end
+      return if hook_exists
+
+      github_client.create_hook(
+        repo_full_name,
+        'web',
+        {
+          url: "#{ENV.fetch('BASE_URL', nil)}/api/checks",
+          content_type: 'json'
+        },
+        {
+          events: ['push'],
+          active: true
+        }
+      )
     end
 
     def repository_params
