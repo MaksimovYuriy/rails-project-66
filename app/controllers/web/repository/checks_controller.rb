@@ -12,6 +12,7 @@ module Web
       end
 
       def create
+        authorize @repository, policy_class: Web::Repository::CheckPolicy
         RepositoryCheckJob.perform_later(@repository)
         redirect_to repository_path(@repository)
       end
