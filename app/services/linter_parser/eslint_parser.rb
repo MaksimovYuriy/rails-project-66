@@ -6,7 +6,7 @@ module LinterParser
   class EslintParser
     extend LinterHelpers
 
-    def self.parse(data)
+    def self.parse(data, commit_id)
       files = {}
       summary = {}
       offense_count = 0
@@ -15,7 +15,7 @@ module LinterParser
         offense_count += file['fatalErrorCount']
         offense_count += file['warningCount']
 
-        path = normalize_path_to_github(file['filePath'])
+        path = normalize_path_to_github(file['filePath'], commit_id)
         files[path] = []
         file['messages'].each do |message|
           files[path] << {

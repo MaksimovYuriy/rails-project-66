@@ -6,13 +6,13 @@ module LinterParser
   class RubocopParser
     extend LinterHelpers
 
-    def self.parse(data)
+    def self.parse(data, commit_id)
       files = {}
       summary = {}
       data['files'].each do |file|
         next if file['offenses'].empty?
 
-        path = normalize_path_to_github(file['path'])
+        path = normalize_path_to_github(file['path'], commit_id)
         files[path] = []
         file['offenses'].each do |offense|
           files[path] << {

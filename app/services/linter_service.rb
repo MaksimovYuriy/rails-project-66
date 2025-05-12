@@ -62,7 +62,7 @@ class LinterService
 
     stdout, stderr, status = Open3.capture3(cmd)
 
-    parsed_data = LinterParser.parse(@language, stdout)
+    parsed_data = LinterParser.parse(@language, stdout, @check.commit_id)
 
     case status.exitstatus
     when 0

@@ -4,7 +4,7 @@ require_relative 'linter_parser/rubocop_parser'
 require_relative 'linter_parser/eslint_parser'
 
 module LinterParser
-  def self.parse(language, data)
+  def self.parse(language, data, commit_id)
     parser = case language
              when 'Ruby'
                RubocopParser
@@ -14,6 +14,6 @@ module LinterParser
                raise "Unsupported linter: #{language}"
              end
     parsed_data = JSON.parse(data)
-    parser.parse(parsed_data)
+    parser.parse(parsed_data, commit_id)
   end
 end
