@@ -12,17 +12,18 @@ module Api
         payload = JSON.parse(request.body.read)
         github_id = payload.dig('repository', 'id')
       else
-        # Обработка обычных HTML/json-запросов без заголовка GitHub
         github_id = params.dig(:repository, :id)
       end
 
       repository = ::Repository.find_by(github_id: github_id)
+      check = repository.checks.build
+      check.save
 
       unless repository
         return head :not_found
       end
 
-      RepositoryCheckJob.perform_later(repository)
+      RepositoryCheckJob.perform_later(repository, check)
       head :ok
     end
   end
