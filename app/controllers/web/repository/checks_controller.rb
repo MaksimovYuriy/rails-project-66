@@ -13,8 +13,10 @@ module Web
 
       def create
         authorize @repository, policy_class: Web::Repository::CheckPolicy
-        RepositoryCheckJob.perform_later(@repository)
-        redirect_to repository_path(@repository)
+        check = @repository.checks.build
+        check.save
+        RepositoryCheckJob.perform_later(@repository, check)
+        redirect_to repository_path(@repository), notice: I18n.t('repository.check.start')
       end
 
       private

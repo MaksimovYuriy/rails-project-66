@@ -47,6 +47,7 @@ ru:
         date: 'Дата'
         warnings_count: 'количество замечаний'
       title: 'Проверка'
+      start: 'Проверка начата'
       result:
         attributes:
           message: 'Сообщение'

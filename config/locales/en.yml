@@ -47,6 +47,7 @@ en:
         date: 'Date'
         warnings_count: 'Warning count'
       title: 'Check'
+      start: 'Check started'
       result:
         attributes:
           message: 'Message'
