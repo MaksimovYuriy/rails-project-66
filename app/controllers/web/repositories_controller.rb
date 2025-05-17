@@ -38,7 +38,8 @@ module Web
         @repository.clone_url = 'default'
         @repository.ssh_url = 'default'
       else
-        redirect_to repositories_path, notice: I18n.t('notice.repository.add_error')
+        @repository.errors.add(:github_id)
+        render :new, status: :unprocessable_entity
         return
       end
       @repository.save
