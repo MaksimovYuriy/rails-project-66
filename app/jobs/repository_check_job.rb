@@ -3,8 +3,8 @@
 class RepositoryCheckJob < ApplicationJob
   queue_as :default
 
-  def perform(repository, check)
-    linter = ApplicationContainer[:linter].new(repository.clone_url, check, repository.language, repository.full_name)
+  def perform(check_id)
+    linter = ApplicationContainer[:linter].new(check_id)
     linter.call
   end
 end

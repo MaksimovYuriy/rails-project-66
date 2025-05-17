@@ -23,7 +23,7 @@ module Api
         return head :not_found
       end
 
-      RepositoryCheckJob.perform_later(repository, check)
+      RepositoryCheckJob.perform_later(check.id)
       head :ok
     end
   end

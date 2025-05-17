@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 class LinterServiceStub
-  def initialize(clone_url, check, language, repo_full_name, output_dir: '/tmp')
-    @clone_url = clone_url
+  def initialize(check_id, output_dir: '/tmp')
+    check = Repository::Check.find(check_id)
+
+    @clone_url = check.repository.clone_url
     @check = check
-    @language = language
+    @language = check.repository.language
     @output_dir = output_dir
-    @temp_dir = repo_full_name
+    @temp_dir = check.repository.full_name
   end
 
   def call
