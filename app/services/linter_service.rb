@@ -16,7 +16,7 @@ class LinterService
   def call
     clone_repo
     run_linter
-    CheckMailer.check_passed(@check).deliver_now
+    CheckMailer.check_finished(@check).deliver_now
   rescue StandardError => e
     @check.fail!
     CheckMailer.check_failed(@check).deliver_now
