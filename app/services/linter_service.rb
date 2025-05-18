@@ -16,18 +16,19 @@ class LinterService
   def call
     clone_repo
     run_linter
-    cleanup
-  rescue StandardError
+  rescue StandardError => e
     @check.fail!
     CheckMailer.check_failed(@check).deliver_now
+    Rails.logger.error "Check failed with error: #{e.message}"
+    Rails.logger.error e.backtrace.join("\n")
+  ensure
+    cleanup
   end
 
   private
 
   def clone_repo
     @check.to_clone!
-
-    FileUtils.rm_rf(@local_repo_path)
 
     cmd = "git clone #{@clone_url} #{@local_repo_path}"
     _, stderr, status = Open3.capture3(cmd)
