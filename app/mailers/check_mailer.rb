@@ -17,7 +17,7 @@ class CheckMailer < ApplicationMailer
 
     return if @user_email.blank?
 
-    main(to: @user_email, subject: I18n.t('mail.subject.finished'))
+    mail(to: @user_email, subject: I18n.t('mail.subject.finished'))
   end
 
   private
