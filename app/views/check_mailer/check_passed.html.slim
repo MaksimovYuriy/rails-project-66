@@ -3,7 +3,8 @@
 
   p.lead = "#{t('mail.hello')}, #{@check.repository&.user&.nickname}"
 
-  p = t('mail.message.failed')
+  p = t('mail.message.finished')
+  = link_to t('mail.result'), repository_check_path(@check.repository, @check)
 
   ul.list-group
     li.list-group-item

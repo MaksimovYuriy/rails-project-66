@@ -11,9 +11,14 @@ en:
     login: 'Login'
   mail:
     title: 'Check Result'
-    message: 'Your check has been failed. Here are the details:'
+    message: 
+      failed: 'Your check has been failed. Here are the details:'
+      finished: 'Your check has been finished.'
     hello: 'Hello'
-    subject: 'Check Failed'
+    result: 'Result'
+    subject:
+      failed: 'Check failed'
+      finished: 'Check finished'
     attributes:
       aasm_state: 'Status'
       started_at: 'Started at'
