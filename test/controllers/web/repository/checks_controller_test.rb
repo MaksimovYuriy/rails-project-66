@@ -15,14 +15,12 @@ module Web
 
       test 'should create check' do
         sign_in @user
-
-        before_count = @repository.checks.count
-
-        perform_enqueued_jobs do
-          post repository_checks_path(@repository), params: {}
+        
+        assert_difference '@repository.checks.count', 1 do
+          perform_enqueued_jobs do
+            post repository_checks_path(@repository), params: {}
+          end
         end
-
-        assert { @repository.checks.count == before_count + 1 }
       end
 
       test 'show page unauthorized' do
