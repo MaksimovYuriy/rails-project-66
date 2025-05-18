@@ -10,4 +10,10 @@ class OctokitClientStub
     repositories = JSON.parse(File.read(fixture_path))
     repositories.map { |repo| Repository.new(repo) }
   end
+
+  def hooks(full_name)
+    []
+  end
+
+  def create_hook(full_name, web, url, event); end
 end

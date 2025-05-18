@@ -9,7 +9,12 @@ module Web
       @repo = repositories(:one)
 
       @attrs = {
-        github_id: 535_535
+        github_id: 2,
+        name: "test_name_2",
+        full_name: "test_full_name_2",
+        language: "Ruby",
+        clone_url: "some_clone_url_2",
+        ssh_url: "some_ssh_url_2"
       }
 
       fixture_body = load_fixture('files/response.json')
@@ -51,6 +56,10 @@ module Web
 
       assert_response :redirect
       assert { repository }
+
+      @attrs.each do |key, value|
+        assert_equal value, repository.send(key)
+      end
     end
 
     test 'show page unauthorized' do
