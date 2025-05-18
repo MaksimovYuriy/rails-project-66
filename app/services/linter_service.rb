@@ -10,8 +10,7 @@ class LinterService
     @clone_url = check.repository.clone_url
     @check = check
     @language = check.repository.language
-    @output_dir = output_dir
-    @temp_dir = check.repository.full_name
+    @local_repo_path = "#{output_dir}/#{check.repository.full_name}"
   end
 
   def call
@@ -27,18 +26,17 @@ class LinterService
 
   def clone_repo
     @check.to_clone!
-    clone_path = "#{@output_dir}/#{@temp_dir}"
 
-    FileUtils.rm_rf(clone_path)
+    FileUtils.rm_rf(@local_repo_path)
 
-    cmd = "git clone #{@clone_url} #{clone_path}"
+    cmd = "git clone #{@clone_url} #{@local_repo_path}"
     _, stderr, status = Open3.capture3(cmd)
 
     unless status.success?
       raise 'Failed to clone repository!'
     end
 
-    Dir.chdir(clone_path) do
+    Dir.chdir(@local_repo_path) do
       cmd_commit_id = 'git rev-parse HEAD'
       commit_id, stderr, status = Open3.capture3(cmd_commit_id)
       @check.update!(commit_id: commit_id.chomp)
@@ -47,15 +45,14 @@ class LinterService
 
   def run_linter
     @check.run!
-    repo_path = "#{@output_dir}/#{@temp_dir}"
 
     case @language
     when 'Ruby'
       config = Rails.root.join('.rubocop.yml').to_s
-      cmd = "bundle exec rubocop --config #{config} #{repo_path} --format json"
+      cmd = "bundle exec rubocop --config #{config} #{@local_repo_path} --format json"
     when 'JavaScript'
       config = Rails.root.join('.eslintrc.js').to_s
-      cmd = "npx eslint --no-eslintrc --config '#{config}' '#{repo_path}' --format=json"
+      cmd = "npx eslint --no-eslintrc --config '#{config}' '#{@local_repo_path}' --format=json"
     else
       raise 'Unknown language'
     end
@@ -78,8 +75,7 @@ class LinterService
   end
 
   def cleanup
-    temp_path = "#{@output_dir}/#{@temp_dir}"
-    FileUtils.rm_rf(temp_path)
+    FileUtils.rm_rf(@local_repo_path)
   end
 
   def send_mail
