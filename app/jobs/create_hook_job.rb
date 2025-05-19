@@ -1,15 +1,15 @@
 class CreateHookJob < ApplicationJob
     queue_as :default
 
-    def perform(repo_full_name)
-        xisting_hooks = github_client.hooks(repo_full_name)
+    def perform(repo_full_name, user_token)
+        existing_hooks = github_client(user_token).hooks(repo_full_name)
         hook_exists = existing_hooks.any? do |hook|
             hook.config['url'] == "#{ENV.fetch('BASE_URL', nil)}/api/checks"
         end
 
         return if hook_exists
 
-        github_client.create_hook(
+        github_client(user_token).create_hook(
             repo_full_name,
             'web',
             {
@@ -25,9 +25,9 @@ class CreateHookJob < ApplicationJob
 
     private
 
-    def github_client
+    def github_client(user_token)
         ApplicationContainer[:octokit_client].new(
-            access_token: current_user.token,
+            access_token: user_token,
             auto_paginate: true
         )
     end

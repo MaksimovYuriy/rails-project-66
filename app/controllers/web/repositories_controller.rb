@@ -28,7 +28,7 @@ module Web
         @repository.language = target_repository.language
         @repository.clone_url = target_repository.clone_url
         @repository.ssh_url = target_repository.ssh_url
-        CreateHookJob.perform_later(target_repository.full_name)
+        CreateHookJob.perform_later(target_repository.full_name, current_user.token)
       elsif !repository_params[:github_id].empty?
         @repository.name = 'default'
         @repository.full_name = 'default'
