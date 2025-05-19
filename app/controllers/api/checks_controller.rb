@@ -16,7 +16,7 @@ module Api
         github_id = params.dig(:repository, :id)
       end
 
-      repository = ::Repository.find(github_id)
+      repository = ::Repository.find_by(github_id: github_id)
       check = repository.checks.build
       check.save
 

@@ -8,7 +8,7 @@ module Api
         test 'should create check' do
             payload = {
                 repository: {
-                    id: @repo[:id]
+                    id: @repo[:github_id]
                 }
             }
 
