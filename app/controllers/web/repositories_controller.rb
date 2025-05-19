@@ -28,7 +28,7 @@ module Web
         @repository.language = target_repository.language
         @repository.clone_url = target_repository.clone_url
         @repository.ssh_url = target_repository.ssh_url
-        create_hook(target_repository.full_name)
+        CreateHookJob.perform_later(target_repository.full_name)
       elsif !repository_params[:github_id].empty?
         @repository.name = 'default'
         @repository.full_name = 'default'
@@ -59,28 +59,6 @@ module Web
       rescue Octokit::Unauthorized
         redirect_to root_path, notice: I18n.t('notice.auth.error')
       end
-    end
-
-    def create_hook(repo_full_name)
-      existing_hooks = github_client.hooks(repo_full_name)
-      hook_exists = existing_hooks.any? do |hook|
-        hook.config['url'] == "#{ENV.fetch('BASE_URL', nil)}/api/checks"
-      end
-
-      return if hook_exists
-
-      github_client.create_hook(
-        repo_full_name,
-        'web',
-        {
-          url: "#{ENV.fetch('BASE_URL', nil)}/api/checks",
-          content_type: 'json'
-        },
-        {
-          events: ['push'],
-          active: true
-        }
-      )
     end
 
     def repository_params
