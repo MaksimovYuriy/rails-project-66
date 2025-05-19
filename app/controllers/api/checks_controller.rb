@@ -7,6 +7,7 @@ module Api
     def create
       if request.headers['X-GitHub-Event'].present?
         event = request.headers['X-GitHub-Event']
+        return head :ok if event == 'ping'
         return head :bad_request unless event == 'push'
 
         payload = JSON.parse(request.body.read)
