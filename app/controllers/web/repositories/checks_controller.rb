@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Web
-  module Repository
+  module Repositories
     class ChecksController < Web::ApplicationController
       before_action :authenticate_user!
       before_action :set_repository

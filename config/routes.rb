@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'auth/failure', to: 'auth#failure'
 
     resources :repositories, only: %i[index new create show] do
-      scope module: :repository do
+      scope module: :repositories do
         resources :checks, only: %i[create show]
       end
     end
