@@ -11,7 +11,7 @@ class OctokitClientStub
     repositories.map { |repo| Repository.new(repo) }
   end
 
-  def hooks(full_name)
+  def hooks(_full_name)
     []
   end
 

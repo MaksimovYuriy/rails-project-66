@@ -10,14 +10,14 @@ module Web
 
       @attrs = {
         github_id: 2,
-        name: "test_name_2",
-        full_name: "test_full_name_2",
-        language: "Ruby",
-        clone_url: "some_clone_url_2",
-        ssh_url: "some_ssh_url_2"
+        name: 'test_name_2',
+        full_name: 'test_full_name_2',
+        language: 'Ruby',
+        clone_url: 'some_clone_url_2',
+        ssh_url: 'some_ssh_url_2'
       }
 
-      fixture_body = load_fixture('files/response.json')
+      load_fixture('files/response.json')
     end
 
     test 'index page not authorized' do

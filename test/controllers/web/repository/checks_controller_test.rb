@@ -15,7 +15,7 @@ module Web
 
       test 'should create check' do
         sign_in @user
-        
+
         assert_difference '@repository.checks.count', 1 do
           perform_enqueued_jobs do
             post repository_checks_path(@repository), params: {}

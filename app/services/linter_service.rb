@@ -3,7 +3,6 @@
 require 'open3'
 
 class LinterService
-
   def initialize(check_id, output_dir: '/tmp')
     check = Repository::Check.find(check_id)
 

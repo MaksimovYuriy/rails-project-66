@@ -2,7 +2,6 @@
 
 module Web
   class AuthControllerTest < ActionDispatch::IntegrationTest
-
     setup do
       @user = users(:user)
     end
