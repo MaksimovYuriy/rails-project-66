@@ -37,7 +37,7 @@ table.table.table-striped.table-bordered.table-hover
     - @repository.checks.order(created_at: :desc).each do |check|
       tr
         td = link_to check.id, repository_check_path(@repository, check)
-        td = t("state.#{check.aasm_state}")
+        td = check.aasm.human_state
         td = link_to check.try(:commit_id).to_s[0..6], get_url_from_commit_id(@repository.clone_url, check.commit_id)
         td = check.passed.nil? ? '' : t("passed.#{check.passed}")
         td = check.created_at.strftime('%d.%m.%Y %H:%M:%S')

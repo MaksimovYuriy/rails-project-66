@@ -7,7 +7,7 @@ strong
 .mb-3
     strong
         = "#{t('repository.check.attributes.aasm_state')}: "
-    = t("aasm_state.#{@check.aasm_state}")
+    = @check.aasm.human_state
 
 .mb-3
     strong

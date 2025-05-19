@@ -1,4 +1,12 @@
 en:
+  activerecord:
+    attributes:
+      repository/check:
+        aasm_state/created: Created
+        aasm_state/cloning: Cloning
+        aasm_state/running: Running
+        aasm_state/finished: Finished
+        aasm_state/failed: Failed
   languages:
     ru: 'Русский язык'
     en: 'English'

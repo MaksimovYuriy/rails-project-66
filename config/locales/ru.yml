@@ -1,4 +1,12 @@
 ru:
+  activerecord:
+    attributes:
+      repository/check:
+        aasm_state/created: Не начата
+        aasm_state/cloning: Клонирование
+        aasm_state/running: В процессе
+        aasm_state/finished: Завершена
+        aasm_state/failed: Произошла ошибка
   languages:
     ru: 'Русский язык'
     en: 'English'
@@ -50,7 +58,7 @@ ru:
         commit_id: 'Коммит'
         created_at: 'Создана'
         date: 'Дата'
-        warnings_count: 'количество замечаний'
+        warnings_count: 'Количество замечаний'
       title: 'Проверка'
       start: 'Проверка начата'
       result:
