@@ -78,10 +78,4 @@ class LinterService
   def cleanup
     FileUtils.rm_rf(@local_repo_path)
   end
-
-  def send_mail
-    return unless @check.failed?
-
-    CheckMailer.check_failed(@check).deliver_now
-  end
 end

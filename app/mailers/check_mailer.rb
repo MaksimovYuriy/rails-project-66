@@ -23,6 +23,6 @@ class CheckMailer < ApplicationMailer
   private
 
   def user_email_from_check(check)
-    check.repository&.user&.email
+    check.repository.user.email
   end
 end

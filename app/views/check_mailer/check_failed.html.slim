@@ -1,7 +1,7 @@
 .container.mt-4
   h1.mb-4.text-primary = t('mail.title')
 
-  p.lead = "#{t('mail.hello')}, #{@check.repository&.user&.nickname}"
+  p.lead = "#{t('mail.hello')}, #{@check.repository.user.nickname}"
 
   p = t('mail.message.failed')
 
@@ -14,4 +14,4 @@
       |  #{@check.created_at.strftime('%Y-%m-%d %H:%M')}"
     li.list-group-item
       strong = "#{t('mail.attributes.repo_link')}:"
-      a href=@check.repository&.clone_url = @check.repository&.clone_url
+      a href=@check.repository.clone_url = @check.repository.clone_url
