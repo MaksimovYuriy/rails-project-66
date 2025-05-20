@@ -17,12 +17,12 @@ module Api
       end
 
       repository = ::Repository.find_by(github_id: github_id)
-      check = repository.checks.build
-      check.save
 
       unless repository
         return head :not_found
       end
+
+      check = repository.checks.create
 
       RepositoryCheckJob.perform_later(check.id)
       head :ok
