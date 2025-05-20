@@ -8,15 +8,6 @@ module Web
       @user = users(:user)
       @repo = repositories(:one)
 
-      @attrs = {
-        github_id: 2,
-        name: 'test_name_2',
-        full_name: 'test_full_name_2',
-        language: 'Ruby',
-        clone_url: 'some_clone_url_2',
-        ssh_url: 'some_ssh_url_2'
-      }
-
       load_fixture('files/response.json')
     end
 
@@ -49,6 +40,15 @@ module Web
     end
 
     test 'should create' do
+      @attrs = {
+        github_id: 2,
+        name: 'test_name_2',
+        full_name: 'test_full_name_2',
+        language: 'Ruby',
+        clone_url: 'some_clone_url_2',
+        ssh_url: 'some_ssh_url_2'
+      }
+
       sign_in @user
 
       post repositories_path, params: { repository: @attrs }
