@@ -66,12 +66,6 @@ en:
           message: 'Message'
           identifier: 'Identifier'
           position: 'Position'
-  aasm_state:
-    created: 'Created'
-    cloning: 'Cloning'
-    running: 'Running'
-    finished: 'Finished'
-    failed: 'Failed'
   passed:
     true: 'True'
     false: 'False'

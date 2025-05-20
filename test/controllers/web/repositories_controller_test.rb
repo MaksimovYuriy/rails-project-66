@@ -52,7 +52,7 @@ module Web
       sign_in @user
 
       post repositories_path, params: { repository: @attrs }
-      repository = ::Repository.find_by(github_id: @attrs[:github_id])
+      repository = ::Repository.find_by(@attrs)
 
       assert_response :redirect
       assert { repository }

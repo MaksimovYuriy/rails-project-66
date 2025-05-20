@@ -15,7 +15,7 @@ class CreateHookJob < ApplicationJob
       repo_full_name,
       'web',
       {
-        url: "#{ENV.fetch('BASE_URL', nil)}/api/checks",
+        url: Rails.application.routes.url_helpers.api_checks_url,
         content_type: 'json'
       },
       {

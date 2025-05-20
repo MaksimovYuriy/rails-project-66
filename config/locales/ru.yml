@@ -66,12 +66,6 @@ ru:
           message: 'Сообщение'
           identifier: 'Идентификатор'
           position: 'Позиция'
-  aasm_state:
-    created: 'Создана'
-    cloning: 'Клонирование'
-    running: 'Выполнение'
-    finished: 'Завершено'
-    failed: 'Неудачно'
   passed:
     true: 'Да'
     false: 'Нет'
